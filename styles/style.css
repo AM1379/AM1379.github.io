@@ -1,0 +1,162 @@
+
+html
+{
+	font-size: 10px;
+	font-family: 'Kumbh Sans', sans-serif;
+	background-color:#ffffff;
+}
+
+
+body {
+	width: 600px;
+	margin: 0 20px;
+	padding: 0 20px 20px 20px;
+	border: 7px double black;
+	background-color: #e9eeee;
+}
+
+p {
+
+}
+
+h1 {
+	font-size: 60px;
+	margin: 0 0;
+}
+
+h2 {
+	margin: 2px 0px 2px 0px;
+	font-size: 30px;
+}
+
+
+header {
+	margin: 20px auto;
+	padding: 5px;
+	border-bottom: 4px solid black;
+}
+
+main {
+	display: flex;
+}
+
+footer {
+	border-top: 2px solid black 
+	height: 20px;
+	display: flex;
+	margin-left: 20px;
+
+}
+
+
+table {
+	display: inline-block;
+	padding: 4px;
+	margin: 0px 20px 0px 20px;
+	border: 1px solid black;
+	background-color: #2623207a
+}
+
+#history {
+	padding: 10px;
+	margin: 0px 20px 0px 20px;
+	border: 1px solid black;
+	height: fit-content;
+	background-color: #faebd77a;
+	width: 260px
+}
+
+ul {
+	padding: 0px;
+	height: 265px;
+	width: 246px;
+
+}
+
+li {
+	width: 240px;
+	height: 20px;
+	list-style: none;
+    margin: 2px;
+    padding: 2px;
+    border-bottom: 0.5px solid #346363;
+    color: #000000;
+    font-size: 12px
+}
+
+
+td {
+	width: 63px;
+	height: 58px;
+	padding: 0px;
+	align-content: center;
+	box-sizing: border-box;
+	border-radius: 2px;
+}
+
+input[type='button'] {
+	margin: inherit;
+	height:inherit;
+	width: inherit;
+	padding:  0px;
+	background-color: transparent;
+	border: none;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-size: 23px;
+	border-radius: 2px;
+	transition: 0.1s
+}
+
+input[type='button']:hover {
+	background-color: #88878582;
+	border: 2px solid #88878582;
+}
+
+input[type='button']:active {
+	background-color:#56565582;
+}
+
+:focus {
+	outline: none;
+}
+
+
+li > p {
+/* 	padding-bottom: 4px; */
+    font-size: 15px;
+    margin: 4px;
+}
+
+.tool {
+    background-color:#ee6443
+}
+
+.number {
+	background-color:#bfcece
+}
+
+.operator, #percent {
+	background-color:#e1dec1
+}
+
+td[colspan="4"] {
+    background-color:#d3d9d9c7;
+    height: 40px;
+}
+
+#operation, #display {
+	height: inherit;
+	width: 246px;
+	padding: 2px;
+	margin: auto;
+	font-size: 23px;
+	font-family: 'Kumbh Sans', sans-serif;
+}
+
+#clock {
+	width: 50px;
+	height: 50px;
+	margin-left: 402px;
+	margin-right: 0px;
+	font-size: 10px;
+}
