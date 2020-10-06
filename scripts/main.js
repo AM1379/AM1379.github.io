@@ -13,15 +13,15 @@ $(document).ready(function() {
 
 	//let cookie variables
 	document.cookie = "history10= test; ";
-	document.cookie = "history9= null; ";
-	document.cookie = "history8= null; ";
-	document.cookie = "history7= null; ";
-	document.cookie = "history6= null; ";
-	document.cookie = "history5= null; ";
-	document.cookie = "history4= null; ";
-	document.cookie = "history3= null; ";
-	document.cookie = "history2= null; ";
-	document.cookie = "history1= null;";
+	document.cookie = "history9= 0; ";
+	document.cookie = "history8= 0; ";
+	document.cookie = "history7= 0; ";
+	document.cookie = "history6= 0; ";
+	document.cookie = "history5= 0; ";
+	document.cookie = "history4= 0; ";
+	document.cookie = "history3= 0; ";
+	document.cookie = "history2= 0; ";
+	document.cookie = "history1= 0;";
 
 	//get cookie values
 	function getCurrentCookieValues() {
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
 		for (let cookie in cookieValues) {
-			if (cookieValues[cookie] == "") break;
+			if (cookieValues[cookie] == "0") break;
 			else {
 				saveToHistory(cookieValues[cookie]);
 				console.log(numOperationsHistory);
