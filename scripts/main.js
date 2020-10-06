@@ -38,10 +38,10 @@ $(document).ready(function() {
 	//assign cookie values to history
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
-		for (let cookie in cookieValues) {
-			if (cookieValues[cookie] == "0") break;
+		for (let i = 1; i <= 10; i++) {
+			if (cookieValues[`history${i}`] == "0") break;
 			else {
-				saveToHistory(cookieValues[cookie]);
+				saveToHistory(cookieValues[`history${i}`]);
 				console.log(numOperationsHistory);
 			}
 		}
