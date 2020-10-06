@@ -40,7 +40,6 @@ $(document).ready(function() {
 			if (cookieValues[cookie] == "") break;
 			else {
 				saveToHistory(cookieValues[cookie]);
-				numOperationsHistory++;
 				console.log(numOperationsHistory);
 			}
 		}
