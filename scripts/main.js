@@ -54,14 +54,14 @@ $(document).ready(function() {
 		}
 		else {
 			`history1 = ${cookieValues['history2']}; `;
-			`history2 = ${cookieValues['history3'}; `;
-			`history3 = ${cookieValues['history4'}; `;
-			`history4 = ${cookieValues['history5'}; `;
-			`history5 = ${cookieValues['history6'}; `;
-			`history6 = ${cookieValues['history7'}; `;
-			`history7 = ${cookieValues['history8'}; `;
-			`history8 = ${cookieValues['history9'}; `;
-			`history9 = ${cookieValues['history10'}; `;
+			`history2 = ${cookieValues['history3']}; `;
+			`history3 = ${cookieValues['history4']}; `;
+			`history4 = ${cookieValues['history5']}; `;
+			`history5 = ${cookieValues['history6']}; `;
+			`history6 = ${cookieValues['history7']}; `;
+			`history7 = ${cookieValues['history8']}; `;
+			`history8 = ${cookieValues['history9']}; `;
+			`history9 = ${cookieValues['history10']}; `;
 			`history10 = ${operation}; `;
 		}
 	}
