@@ -12,7 +12,7 @@ $(document).ready(function() {
 
 
 	//let cookie variables
-	document.cookie = "history10= test; ";
+	document.cookie = "history10= 0; ";
 	document.cookie = "history9= 0; ";
 	document.cookie = "history8= 0; ";
 	document.cookie = "history7= 0; ";
@@ -21,7 +21,7 @@ $(document).ready(function() {
 	document.cookie = "history4= 0; ";
 	document.cookie = "history3= 0; ";
 	document.cookie = "history2= 0; ";
-	document.cookie = "history1= 0;";
+	document.cookie = "history1= 3+2;";
 
 	//get cookie values
 	function getCurrentCookieValues() {
