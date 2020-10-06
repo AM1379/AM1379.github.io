@@ -11,7 +11,8 @@ $(document).ready(function() {
 	let numOperationsHistory = 0;
 
 
-	//let cookie variables
+	//declare cookie variables
+	if (!document.cookie) {
 	document.cookie = "history1= 1+2 = 3; ";
 	document.cookie = "history2= 0; ";
 	document.cookie = "history3= 0; ";
@@ -22,6 +23,7 @@ $(document).ready(function() {
 	document.cookie = "history8= 0; ";
 	document.cookie = "history9= 0; ";
 	document.cookie = "history10= 0;";
+	}
 
 	//get cookie values
 	function getCurrentCookieValues() {
@@ -55,16 +57,16 @@ $(document).ready(function() {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
-			`history1 = ${cookieValues['history2']}; `;
-			`history2 = ${cookieValues['history3']}; `;
-			`history3 = ${cookieValues['history4']}; `;
-			`history4 = ${cookieValues['history5']}; `;
-			`history5 = ${cookieValues['history6']}; `;
-			`history6 = ${cookieValues['history7']}; `;
-			`history7 = ${cookieValues['history8']}; `;
-			`history8 = ${cookieValues['history9']}; `;
-			`history9 = ${cookieValues['history10']}; `;
-			`history10 = ${operation}; `;
+			document.cookie = `history1 = ${cookieValues['history2']}; `;
+			document.cookie = `history2 = ${cookieValues['history3']}; `;
+			document.cookie = `history3 = ${cookieValues['history4']}; `;
+			document.cookie = `history4 = ${cookieValues['history5']}; `;
+			document.cookie = `history5 = ${cookieValues['history6']}; `;
+			document.cookie = `history6 = ${cookieValues['history7']}; `;
+			document.cookie = `history7 = ${cookieValues['history8']}; `;
+			document.cookie = `history8 = ${cookieValues['history9']}; `;
+			document.cookie = `history9 = ${cookieValues['history10']}; `;
+			document.cookie = `history10 = ${operation}; `;
 		}
 	}
 	
