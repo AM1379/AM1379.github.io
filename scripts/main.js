@@ -10,25 +10,34 @@ $(document).ready(function() {
 
 
 	//let cookie variables
-	document.cookie = "history1='test'; ";
-	document.cookie = "history2=''; ";
-	document.cookie = "history3=''; ";
-	document.cookie = "history4=''; ";
-	document.cookie = "history5=''; ";
-	document.cookie = "history6=''; ";
-	document.cookie = "history7=''; ";
-	document.cookie = "history8=''; ";
-	document.cookie = "history9=''; ";
-	document.cookie = "history10='' ;";
+	document.cookie = "history1=test; ";
+	document.cookie = "history2=; ";
+	document.cookie = "history3=; ";
+	document.cookie = "history4=; ";
+	document.cookie = "history5=; ";
+	document.cookie = "history6=; ";
+	document.cookie = "history7=; ";
+	document.cookie = "history8=; ";
+	document.cookie = "history9=; ";
+	document.cookie = "history10= ;";
 
-	//get operation history from cookies
-for (let number = 1; number <=10; number++) {
-	if (!document.cookie.split(';').some((item) => item.includes(`history${number}=''`))) {
-	    let cookie;
-		}
-}
+	//get cookie values
+	let cookieValues = document.cookie
+			.split(';')
+			.map(cookie => cookie.split('='))
+			.reduce((accumulator, [key, value]) =>
+				({...accumulator, [key.trim()]: decodeURIComponent(value)}),
+	{});
+
+	//assign cookie values to history
 	
-
+	for (let cookie in cookieValues) {
+		if (cookie === "") break;
+		else {
+			saveToHistory(cookie);
+			numOperationsHistory++;
+		}
+	}
 	
 
 	//click on a number
@@ -116,7 +125,8 @@ $('#percent').on('click', function() {
 		operation.attr('value',operation.attr('value') + display.attr('value')+" = " );
 		showResult();
 		updateOperator("=");
-		saveToHistory();
+		saveToHistory(operation.attr('value') + result);
+		saveToCookie(operation.attr('value') + result, numOperationsHistory); 
 	});
 	
 	function resetCalculator() {
@@ -141,23 +151,22 @@ $('#percent').on('click', function() {
 	} );
 		
 	
-	function saveToHistory() {
+	function saveToHistory(value) {
 		
 		let maxOperationsHistory = 10;
 		
 		if (numOperationsHistory < maxOperationsHistory) {
 			let li = document.createElement('li');
-			li.innerHTML = "<p>" + operation.attr('value') + result + "</p>";
+			li.innerHTML = "<p>" + value + "</p>";
 			$('ul').prepend(li);	
 			numOperationsHistory++;
 		}
 		else {
 			$("ul li:last-child").remove();
 			let li = document.createElement('li');
-			li.innerHTML = "<p>" + operation.attr('value') + result + "</p>";
+			li.innerHTML = "<p>" + value + "</p>";
 			$('ul').prepend(li);
 		}
-	//putComma
 	}
 
 	
