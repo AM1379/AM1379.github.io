@@ -12,16 +12,16 @@ $(document).ready(function() {
 
 
 	//let cookie variables
-	document.cookie = "history10= 0; ";
-	document.cookie = "history9= 0; ";
-	document.cookie = "history8= 0; ";
-	document.cookie = "history7= 0; ";
-	document.cookie = "history6= 0; ";
-	document.cookie = "history5= 0; ";
-	document.cookie = "history4= 0; ";
-	document.cookie = "history3= 0; ";
+	document.cookie = "history1= 1+2 = 3; ";
 	document.cookie = "history2= 0; ";
-	document.cookie = "history1= 3+2;";
+	document.cookie = "history3= 0; ";
+	document.cookie = "history4= 0; ";
+	document.cookie = "history5= 0; ";
+	document.cookie = "history6= 0; ";
+	document.cookie = "history7= 0; ";
+	document.cookie = "history8= 0; ";
+	document.cookie = "history9= 0; ";
+	document.cookie = "history10= 0;";
 
 	//get cookie values
 	function getCurrentCookieValues() {
