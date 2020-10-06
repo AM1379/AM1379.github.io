@@ -40,7 +40,6 @@ $(document).ready(function() {
 		}
 	}
 	
-
 	//click on a number
 	$("input.number").on('click', function () {
 		if (operator == '=') resetCalculator();
