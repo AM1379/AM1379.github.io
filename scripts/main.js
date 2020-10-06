@@ -10,35 +10,63 @@ $(document).ready(function() {
 
 
 	//let cookie variables
-	document.cookie = "history1=test; ";
-	document.cookie = "history2= ; ";
-	document.cookie = "history3= ; ";
-	document.cookie = "history4= ; ";
-	document.cookie = "history5= ; ";
-	document.cookie = "history6= ; ";
-	document.cookie = "history7= ; ";
-	document.cookie = "history8= ; ";
+	document.cookie = "history10=test; ";
 	document.cookie = "history9= ; ";
-	document.cookie = "history10= ;";
+	document.cookie = "history8= ; ";
+	document.cookie = "history7= ; ";
+	document.cookie = "history6= ; ";
+	document.cookie = "history5= ; ";
+	document.cookie = "history4= ; ";
+	document.cookie = "history3= ; ";
+	document.cookie = "history2= ; ";
+	document.cookie = "history1= ;";
 
 	//get cookie values
+	function getCurrentCookieValues() {
 	let cookieValues = document.cookie
 			.split(';')
 			.map(cookie => cookie.split('='))
 			.reduce((accumulator, [key, value]) =>
 				({...accumulator, [key.trim()]: decodeURIComponent(value)}),
 	{});
+	
+	return cookieValues;
+	}
 
 	//assign cookie values to history
-	
-	for (let cookie in cookieValues) {
-		if (cookieValues[cookie] == "") break;
-		else {
-			saveToHistory(cookieValues[cookie]);
-			numOperationsHistory++;
-			console.log(numOperationsHistory);
+	function recreateHistoryFromCookies(){
+		let cookieValues = getCurrentCookieValues();
+		for (let cookie in cookieValues) {
+			if (cookieValues[cookie] == "") break;
+			else {
+				saveToHistory(cookieValues[cookie]);
+				numOperationsHistory++;
+				console.log(numOperationsHistory);
+			}
 		}
 	}
+	
+	recreateHistoryFromCookies();
+	
+	function saveOperationToCookie(operation, index) {
+		let cookieValues = getCurrentCookieValues();
+		if (cookieValues['history10'] == "") {
+			document.cookie = `history${index} = ${operation}; `;
+		}
+		else {
+			`history1 = ${cookieValues['history2']}; `;
+			`history2 = ${cookieValues['history3'}; `;
+			`history3 = ${cookieValues['history4'}; `;
+			`history4 = ${cookieValues['history5'}; `;
+			`history5 = ${cookieValues['history6'}; `;
+			`history6 = ${cookieValues['history7'}; `;
+			`history7 = ${cookieValues['history8'}; `;
+			`history8 = ${cookieValues['history9'}; `;
+			`history9 = ${cookieValues['history10'}; `;
+			`history10 = ${operation}; `;
+		}
+	}
+	
 	
 	//click on a number
 	$("input.number").on('click', function () {
