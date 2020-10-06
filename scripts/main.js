@@ -11,14 +11,14 @@ $(document).ready(function() {
 
 	//let cookie variables
 	document.cookie = "history1=test; ";
-	document.cookie = "history2=; ";
-	document.cookie = "history3=; ";
-	document.cookie = "history4=; ";
-	document.cookie = "history5=; ";
-	document.cookie = "history6=; ";
-	document.cookie = "history7=; ";
-	document.cookie = "history8=; ";
-	document.cookie = "history9=; ";
+	document.cookie = "history2= ; ";
+	document.cookie = "history3= ; ";
+	document.cookie = "history4= ; ";
+	document.cookie = "history5= ; ";
+	document.cookie = "history6= ; ";
+	document.cookie = "history7= ; ";
+	document.cookie = "history8= ; ";
+	document.cookie = "history9= ; ";
 	document.cookie = "history10= ;";
 
 	//get cookie values
@@ -31,11 +31,12 @@ $(document).ready(function() {
 
 	//assign cookie values to history
 	
-	for (let cookie in cookieValues) {
-		if (cookie === "") break;
+	for (let value in cookieValues) {
+		if (cookieValues[cookie] == "") break;
 		else {
-			saveToHistory(cookie);
+			saveToHistory(cookieValues[cookie]);
 			numOperationsHistory++;
+			console.log(numOperationsHistory);
 		}
 	}
 	
