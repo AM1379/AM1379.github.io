@@ -153,7 +153,7 @@ $('#percent').on('click', function() {
 		showResult();
 		updateOperator("=");
 		saveToHistory(operation.attr('value') + result);
-		saveToCookie(operation.attr('value') + result, numOperationsHistory); 
+		saveOperationToCookie(operation.attr('value') + result, numOperationsHistory); 
 	});
 	
 	function resetCalculator() {
