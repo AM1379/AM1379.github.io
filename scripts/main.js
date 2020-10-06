@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 	//assign cookie values to history
 	
-	for (let value in cookieValues) {
+	for (let cookie in cookieValues) {
 		if (cookieValues[cookie] == "") break;
 		else {
 			saveToHistory(cookieValues[cookie]);
