@@ -59,7 +59,7 @@ $(document).ready(function() {
 	
 	function saveOperationToCookie(operation, index) {
 		let cookieValues = getCurrentCookieValues();
-		if (cookieValues['history10'] == "0") {
+		if (cookieValues['history10']['val'] == "0") {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
