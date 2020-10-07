@@ -14,7 +14,7 @@ $(document).ready(function() {
 	//declare cookie variables
 	if (!document.cookie) {
 		let d = new Date();
-		d.setStime(d.getTime() + (30*24*60*60*1000));
+		d.setTime(d.getTime() + (30*24*60*60*1000));
 		let expires = "expires="+d.toUTCString();
 	document.cookie = "history1= 1+2;" + expires + ";path=/;";
 	document.cookie = "history2= 0; " + expires + ";path=/;";
@@ -45,12 +45,11 @@ $(document).ready(function() {
 
 	//assign cookie values to history
 	function recreateHistoryFromCookies(){
-		let cookieValues;
-		cookieValues = getCurrentCookieValues();
+		let cookieValues = getCurrentCookieValues();
 		for (let i = 1; i <= 10; i++) {
-			if (cookieValues[`history${i}`]['val'] == "0") break;
+			if (cookieValues[`history${i}`].val == "0") break;
 			else {
-				saveToHistory(cookieValues[`history${i}`]['val'] + " = " + cookieValues[`history${i}`]['res'] );
+				saveToHistory(cookieValues[`history${i}`].val + " = " + cookieValues[`history${i}`].res );
 				console.log(numOperationsHistory);
 			}
 		}
@@ -59,15 +58,14 @@ $(document).ready(function() {
 	recreateHistoryFromCookies();
 	
 	function saveOperationToCookie(operation, index) {
-		let cookieValues;
-		cookieValues = getCurrentCookieValues();
-		if (cookieValues['history10']['val'] == "0") {
+		let cookieValues = getCurrentCookieValues();
+		if (cookieValues.history10.val == "0") {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
 			
 			for (let i = 1; i<10; i++) {
-				let op = cookieValues[`history${i+1}`]['val'] + "=" + cookieValues[`history${i+1}`]['res'];
+				let op = cookieValues[`history${i+1}`].val + "=" + cookieValues[`history${i+1}`].res;
 				document.cookie = `history${i} = ${op}; `;
 			}
 			document.cookie = `history10 = ${operation}; `;
