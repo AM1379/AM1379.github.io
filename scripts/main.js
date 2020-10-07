@@ -11,24 +11,29 @@ $(document).ready(function() {
 	let numOperationsHistory = 0;
 
 
-	//let cookie variables
-	document.cookie = "history10= test; ";
-	document.cookie = "history9= 0; ";
-	document.cookie = "history8= 0; ";
-	document.cookie = "history7= 0; ";
-	document.cookie = "history6= 0; ";
-	document.cookie = "history5= 0; ";
-	document.cookie = "history4= 0; ";
-	document.cookie = "history3= 0; ";
-	document.cookie = "history2= 0; ";
-	document.cookie = "history1= 0;";
+	//declare cookie variables
+	if (!document.cookie) {
+		let d = new Date();
+		d.setTime(d.getTime() + (30*24*60*60*1000));
+		let expires = "expires="+d.toUTCString();
+		document.cookie = "history1= 1+2 = 3;" + expires + ";path=/;";
+		document.cookie = "history2= 0; " + expires + ";path=/;";
+		document.cookie = "history3= 0; " + expires + ";path=/;";
+		document.cookie = "history4= 0; " + expires + ";path=/;";
+		document.cookie = "history5= 0; " + expires + ";path=/;";
+		document.cookie = "history6= 0; " + expires + ";path=/;";
+		document.cookie = "history7= 0; " + expires + ";path=/;";
+		document.cookie = "history8= 0; " + expires + ";path=/;";
+		document.cookie = "history9= 0; " + expires + ";path=/;";
+		document.cookie = "history10= 0;" + expires + ";path=/;";
+	}
 
 	//get cookie values
 	function getCurrentCookieValues() {
 	let cookieValues = document.cookie
 			.split(';')
 			.map(cookie => cookie.split('='))
-			.reduce((accumulator, [key, value]) =>
+			.reduce((accumulator, [key, value, result]) =>
 				({...accumulator, [key.trim()]: decodeURIComponent(value)}),
 	{});
 	
@@ -38,10 +43,10 @@ $(document).ready(function() {
 	//assign cookie values to history
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
-		for (let cookie in cookieValues) {
-			if (cookieValues[cookie] == "0") break;
+		for (let i = 1; i <= 10; i++) {
+			if (cookieValues[`history${i}`] == "0") break;
 			else {
-				saveToHistory(cookieValues[cookie]);
+				saveToHistory(cookieValues[`history${i}`]);
 				console.log(numOperationsHistory);
 			}
 		}
@@ -55,16 +60,16 @@ $(document).ready(function() {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
-			`history1 = ${cookieValues['history2']}; `;
-			`history2 = ${cookieValues['history3']}; `;
-			`history3 = ${cookieValues['history4']}; `;
-			`history4 = ${cookieValues['history5']}; `;
-			`history5 = ${cookieValues['history6']}; `;
-			`history6 = ${cookieValues['history7']}; `;
-			`history7 = ${cookieValues['history8']}; `;
-			`history8 = ${cookieValues['history9']}; `;
-			`history9 = ${cookieValues['history10']}; `;
-			`history10 = ${operation}; `;
+			document.cookie = `history1 = ${cookieValues['history2']}; `;
+			document.cookie = `history2 = ${cookieValues['history3']}; `;
+			document.cookie = `history3 = ${cookieValues['history4']}; `;
+			document.cookie = `history4 = ${cookieValues['history5']}; `;
+			document.cookie = `history5 = ${cookieValues['history6']}; `;
+			document.cookie = `history6 = ${cookieValues['history7']}; `;
+			document.cookie = `history7 = ${cookieValues['history8']}; `;
+			document.cookie = `history8 = ${cookieValues['history9']}; `;
+			document.cookie = `history9 = ${cookieValues['history10']}; `;
+			document.cookie = `history10 = ${operation}; `;
 		}
 	}
 	
