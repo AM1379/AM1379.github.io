@@ -14,18 +14,18 @@ $(document).ready(function() {
 	//declare cookie variables
 	if (!document.cookie) {
 		let d = new Date();
-		d.setTime(d.getTime() + (30*24*60*60*1000));
+		d.setStime(d.getTime() + (30*24*60*60*1000));
 		let expires = "expires="+d.toUTCString();
-		document.cookie = "history1= 1+2 = 3;" + expires + ";path=/;";
-		document.cookie = "history2= 0; " + expires + ";path=/;";
-		document.cookie = "history3= 0; " + expires + ";path=/;";
-		document.cookie = "history4= 0; " + expires + ";path=/;";
-		document.cookie = "history5= 0; " + expires + ";path=/;";
-		document.cookie = "history6= 0; " + expires + ";path=/;";
-		document.cookie = "history7= 0; " + expires + ";path=/;";
-		document.cookie = "history8= 0; " + expires + ";path=/;";
-		document.cookie = "history9= 0; " + expires + ";path=/;";
-		document.cookie = "history10= 0;" + expires + ";path=/;";
+	document.cookie = "history1= 1+2;" + expires + ";path=/;";
+	document.cookie = "history2= 0; " + expires + ";path=/;";
+	document.cookie = "history3= 0; " + expires + ";path=/;";
+	document.cookie = "history4= 0; " + expires + ";path=/;";
+	document.cookie = "history5= 0; " + expires + ";path=/;";
+	document.cookie = "history6= 0; " + expires + ";path=/;";
+	document.cookie = "history7= 0; " + expires + ";path=/;";
+	document.cookie = "history8= 0; " + expires + ";path=/;";
+	document.cookie = "history9= 0; " + expires + ";path=/;";
+	document.cookie = "history10= 0;" + expires + ";path=/;";
 	}
 
 	//get cookie values
@@ -33,9 +33,12 @@ $(document).ready(function() {
 	let cookieValues = document.cookie
 			.split(';')
 			.map(cookie => cookie.split('='))
-			.reduce((accumulator, [key, value, result]) =>
-				({...accumulator, [key.trim()]: decodeURIComponent(value)}),
-	{});
+			.reduce((accumulator, [key, value, result]) => (
+			{...accumulator, [key.trim()]: { 
+			val: decodeURIComponent(value), 
+			res: decodeURIComponent(result) } 
+			}), 
+			{});
 	
 	return cookieValues;
 	}
@@ -44,9 +47,9 @@ $(document).ready(function() {
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
 		for (let i = 1; i <= 10; i++) {
-			if (cookieValues[`history${i}`] == "0") break;
+			if (cookieValues[`history${i}`]['val'] == "0") break;
 			else {
-				saveToHistory(cookieValues[`history${i}`]);
+				saveToHistory(cookieValues[`history${i}`]['val'] + " = " + cookieValues[`history${i}`]['res'] );
 				console.log(numOperationsHistory);
 			}
 		}
