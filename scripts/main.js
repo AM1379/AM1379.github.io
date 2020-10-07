@@ -1,3 +1,4 @@
+
 'use strict'
 
 $(document).ready(function() {
@@ -16,16 +17,16 @@ $(document).ready(function() {
 		let d = new Date();
 		d.setTime(d.getTime() + (30*24*60*60*1000));
 		let expires = "expires="+d.toUTCString();
-		document.cookie = "history1= 0;" + expires + ";path=/;";
-		document.cookie = "history2= 0; " + expires + ";path=/;";
-		document.cookie = "history3= 0; " + expires + ";path=/;";
-		document.cookie = "history4= 0; " + expires + ";path=/;";
-		document.cookie = "history5= 0; " + expires + ";path=/;";
-		document.cookie = "history6= 0; " + expires + ";path=/;";
-		document.cookie = "history7= 0; " + expires + ";path=/;";
-		document.cookie = "history8= 0; " + expires + ";path=/;";
-		document.cookie = "history9= 0; " + expires + ";path=/;";
-		document.cookie = "history10= 0;" + expires + ";path=/;";
+	document.cookie = "history1= 0;" + expires + ";path=/;";
+	document.cookie = "history2= 0; " + expires + ";path=/;";
+	document.cookie = "history3= 0; " + expires + ";path=/;";
+	document.cookie = "history4= 0; " + expires + ";path=/;";
+	document.cookie = "history5= 0; " + expires + ";path=/;";
+	document.cookie = "history6= 0; " + expires + ";path=/;";
+	document.cookie = "history7= 0; " + expires + ";path=/;";
+	document.cookie = "history8= 0; " + expires + ";path=/;";
+	document.cookie = "history9= 0; " + expires + ";path=/;";
+	document.cookie = "history10= 0;" + expires + ";path=/;";
 	}
 
 	//get cookie values
@@ -33,9 +34,12 @@ $(document).ready(function() {
 	let cookieValues = document.cookie
 			.split(';')
 			.map(cookie => cookie.split('='))
-			.reduce((accumulator, [key, value, result]) =>
-				({...accumulator, [key.trim()]: decodeURIComponent(value)}),
-	{});
+			.reduce((accumulator, [key, value, result]) => (
+			{...accumulator, [key.trim()]: { 
+			val: decodeURIComponent(value), 
+			res: decodeURIComponent(result) } 
+			}), 
+			{});
 	
 	return cookieValues;
 	}
@@ -44,9 +48,9 @@ $(document).ready(function() {
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
 		for (let i = 1; i <= 10; i++) {
-			if (cookieValues[`history${i}`] == "0") break;
+			if (cookieValues[`history${i}`].val == "0") break;
 			else {
-				saveToHistory(cookieValues[`history${i}`]);
+				saveToHistory(cookieValues[`history${i}`].val + " = " + cookieValues[`history${i}`].res );
 				console.log(numOperationsHistory);
 			}
 		}
@@ -56,19 +60,15 @@ $(document).ready(function() {
 	
 	function saveOperationToCookie(operation, index) {
 		let cookieValues = getCurrentCookieValues();
-		if (cookieValues['history10'] == "0") {
+		if (cookieValues.history10.val == "0") {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
-			document.cookie = `history1 = ${cookieValues['history2']}; `;
-			document.cookie = `history2 = ${cookieValues['history3']}; `;
-			document.cookie = `history3 = ${cookieValues['history4']}; `;
-			document.cookie = `history4 = ${cookieValues['history5']}; `;
-			document.cookie = `history5 = ${cookieValues['history6']}; `;
-			document.cookie = `history6 = ${cookieValues['history7']}; `;
-			document.cookie = `history7 = ${cookieValues['history8']}; `;
-			document.cookie = `history8 = ${cookieValues['history9']}; `;
-			document.cookie = `history9 = ${cookieValues['history10']}; `;
+			
+			for (let i = 1; i<10; i++) {
+				let op = cookieValues[`history${i+1}`].val + "=" + cookieValues[`history${i+1}`].res;
+				document.cookie = `history${i} = ${op}; `;
+			}
 			document.cookie = `history10 = ${operation}; `;
 		}
 	}
