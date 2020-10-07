@@ -58,7 +58,7 @@ $(document).ready(function() {
 	recreateHistoryFromCookies();
 	
 	function saveOperationToCookie(operation, index) {
-		let cookieValues = getCurrentCookieValues();
+		cookieValues = getCurrentCookieValues();
 		if (cookieValues['history10']['val'] == "0") {
 			document.cookie = `history${index} = ${operation}; `;
 		}
