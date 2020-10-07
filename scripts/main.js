@@ -63,15 +63,11 @@ $(document).ready(function() {
 			document.cookie = `history${index} = ${operation}; `;
 		}
 		else {
-			document.cookie = `history1 = ${cookieValues['history2']}; `;
-			document.cookie = `history2 = ${cookieValues['history3']}; `;
-			document.cookie = `history3 = ${cookieValues['history4']}; `;
-			document.cookie = `history4 = ${cookieValues['history5']}; `;
-			document.cookie = `history5 = ${cookieValues['history6']}; `;
-			document.cookie = `history6 = ${cookieValues['history7']}; `;
-			document.cookie = `history7 = ${cookieValues['history8']}; `;
-			document.cookie = `history8 = ${cookieValues['history9']}; `;
-			document.cookie = `history9 = ${cookieValues['history10']}; `;
+			
+			for (let i = 1; i<10; i++) {
+				let op = cookieValues[`history${i+1}`]['val'] + "=" + cookieValues[`history${i+1}`]['res'];
+				document.cookie = `history${i} = ${op}; `;
+			}
 			document.cookie = `history10 = ${operation}; `;
 		}
 	}
