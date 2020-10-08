@@ -15,6 +15,7 @@ $(document).ready(function() {
 	//declare cookie variables
 	if (!document.cookie) {
 		let d = new Date();
+		console.log("Creating cookies");
 		d.setTime(d.getTime() + (30*24*60*60*1000));
 		let expires = "expires="+d.toUTCString();
 	document.cookie = "history1= 0;" + expires + ";path=/;";
