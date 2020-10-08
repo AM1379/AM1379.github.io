@@ -15,6 +15,7 @@ $(document).ready(function() {
 	//declare cookie variables
 	if (!document.cookie) {
 		console.log("Creating cookies");
+		//just a test
 		let maxAge = "max-age="+ (30*24*60*60);
 		document.cookie = "history1= 0;" + maxAge + ";path=/;";
 		document.cookie = "history2= 0; " + maxAge + ";path=/;";
