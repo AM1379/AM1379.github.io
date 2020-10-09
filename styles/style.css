@@ -30,8 +30,8 @@ h2 {
 }
 
 h3 {
-	margin-left: 20px;
-	font-size: 15px; 
+	margin: 20px 4px 10px 20px;
+	font-size: 15px;
 }
 
 label {
@@ -176,6 +176,15 @@ td[colspan="4"] {
 	width: 246px;
 	font-family: 'Kumbh Sans', sans-serif;
 	font-size: 17px;
+}
+
+#user {
+	font-size: 15px;
+	margin: 20px 0px 10px 0px;
+}
+
+#userbox {
+	display: flex;
 }
 
 #clock {

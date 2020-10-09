@@ -10,13 +10,13 @@ $(document).ready(function() {
 	let operation = $("#operation");
 	let display = $("#display");
 	let numOperationsHistory = 0;
-
+	let urlParams = new URLSearchParams(window.location.search);
+	let maxAge = "max-age="+ (30*24*60*60);
+	
+	
 
 	//declare cookie variables
 	if (!document.cookie) {
-		console.log("Creating cookies");
-		//just a test
-		let maxAge = "max-age="+ (30*24*60*60);
 		document.cookie = "history1= 0;" + maxAge + ";path=/;";
 		document.cookie = "history2= 0; " + maxAge + ";path=/;";
 		document.cookie = "history3= 0; " + maxAge + ";path=/;";
@@ -61,17 +61,21 @@ $(document).ready(function() {
 	function saveOperationToCookie(operation, index) {
 		let cookieValues = getCurrentCookieValues();
 		if (cookieValues.history10.val == "0") {
-			document.cookie = `history${index} = ${operation}; `;
+			document.cookie = `history${index} = ${operation}; ${maxAge}; path=/; `;
 		}
 		else {
 			
 			for (let i = 1; i<10; i++) {
 				let op = cookieValues[`history${i+1}`].val + "=" + cookieValues[`history${i+1}`].res;
-				document.cookie = `history${i} = ${op}; `;
+				document.cookie = `history${i} = ${op}; ${maxAge}; path=/; `;
 			}
-			document.cookie = `history10 = ${operation}; `;
+			document.cookie = `history10 = ${operation}; ${maxAge}; path=/; `;
 		}
 	}
+	
+	//getUserName
+	$('#user').text( $('#user').text() + urlParams.get('username') );
+
 	
 	
 	//click on a number

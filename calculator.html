@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="en_US">
+	<head>
+		
+		<meta charset="utf-8">
+		
+		<title>Simple Calculator</title>
+		
+		<meta name="author" content="Álvaro Barbosa">
+		<meta name="description" content="A simple online calculator with an elegant design">
+		
+		<link rel="shortcut icon" type="favicon.ico" href="images\Calculator.ico">
+		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans" rel="stylesheet">
+		<link href="styles/style.css" rel="stylesheet">
+	
+	    <script src="scripts/jquery-3.5.1.js"></script>
+		<script src="scripts/main.js" defer></script>
+		
+	</head>
+	
+	<header>
+		
+			<h1>Simple Calculator</h1>
+		
+	</header>
+	<body>
+
+		<main>
+
+		    <form name="calculator">
+
+		        <table>
+                    <tr>
+                        <td colspan ="4"><input type="text" id = "operation" value = "" disabled></input>  
+					</tr>
+					<tr>
+					     <td colspan="4"><input type="text" id="display" value = "" disabled></input></td> 
+					</tr>
+					<tr>
+					    <td class="tool"><input type="button" value="CE" id="CE"></input></td>
+					    <td class="tool"><input type="button" value="C" id="C"></input></td>
+					    <td class="number"><input type="button" value="%" id="percent"></input></td>
+					    <td class="operator"><input type="button" value= "+" class="operator"></input></td>
+					</tr>
+					<tr>
+					    <td class="number"><input type="button" value ="7" class = "number"></input></td>
+					    <td class="number"><input type="button" value="8" class = "number"></input></td>
+					    <td class="number"><input type="button" value="9" class = "number"></input></td>
+					    <td class="operator"><input type="button" value="-" class="operator"></input></td>
+					</tr>
+					<tr>
+					    <td class= "number"><input type="button" value="4" class = "number"></input></td>
+					    <td class="number"><input type="button" value="5" class = "number"></input></td>
+					    <td class="number"><input type="button" value="6" class = "number"></input></td>
+					    <td class="operator"><input type="button" value="*" class="operator"></input></td>
+					</tr>
+					<tr>
+					    <td class="number"><input type="button" value="1" class = "number"></input></td>
+					    <td class="number"><input type="button" value="2" class = "number"></input></td>
+					    <td class="number"><input type="button" value="3" class = "number"></input></td>
+					    <td class="operator"><input type="button" value="/" class="operator"></input></td>
+					</tr>
+					<tr>
+					    <td class="number"><input type="button" value="0" class = "number"></input></td>
+					    <td class="number"><input type="button" value="." class = "number" id="point"></input></td>
+					    <td class="operator"><input type="button" value="=" id="enter"></input></td>
+					    <td class="operator"><input type="button" value="^" class="operator"></input></td>
+					</tr>
+
+		        </table>
+
+		    </form>
+            <sidebar>
+					            
+            <div id = "history">
+                    <h2>History</h2>
+                    <ul></ul>                    
+			</div>
+
+			<div id = "userbox"> <h3>User: </h3> <p id="user"></p> </div>	
+			</sidebar>		
+        </main>
+
+	    <footer>
+            <p>Created by: Álvaro Barbosa</p>
+            <div id='clock'></div>
+	    </footer>
+	
+	</body>
+
+</html>
