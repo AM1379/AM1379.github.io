@@ -9,7 +9,7 @@ html
 
 body {
 	width: 600px;
-	margin: 0 20px;
+	margin: auto;
 	padding: 0 20px 20px 20px;
 	border: 7px double black;
 	background-color: #e9eeee;
@@ -27,6 +27,16 @@ h1 {
 h2 {
 	margin: 2px 0px 2px 0px;
 	font-size: 30px;
+}
+
+h3 {
+	margin-left: 20px;
+	font-size: 15px; 
+}
+
+label {
+	
+	font-size: 20px;
 }
 
 
@@ -116,6 +126,12 @@ input[type='button']:active {
 	background-color:#56565582;
 }
 
+input[type='submit'] {
+	font-family: 'Kumbh Sans', sans-serif;
+	font-size: 15px;
+	padding: 2px;
+}
+
 :focus {
 	outline: none;
 }
@@ -140,17 +156,26 @@ li > p {
 }
 
 td[colspan="4"] {
-    background-color:#d3d9d9c7;
+    background-color: #e5e7e7;
     height: 40px;
 }
 
-#operation, #display {
+#operation, #display{
 	height: inherit;
 	width: 246px;
 	padding: 2px;
 	margin: auto;
 	font-size: 22px;
 	font-family: 'Kumbh Sans', sans-serif;
+	border: none;
+	
+}
+
+#username {
+	height: 20px;
+	width: 246px;
+	font-family: 'Kumbh Sans', sans-serif;
+	font-size: 17px;
 }
 
 #clock {

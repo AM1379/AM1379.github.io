@@ -14,19 +14,19 @@ $(document).ready(function() {
 
 	//declare cookie variables
 	if (!document.cookie) {
-		let d = new Date();
-		d.setTime(d.getTime() + (30*24*60*60*1000));
-		let expires = "expires="+d.toUTCString();
-	document.cookie = "history1= 0;" + expires + ";path=/;";
-	document.cookie = "history2= 0; " + expires + ";path=/;";
-	document.cookie = "history3= 0; " + expires + ";path=/;";
-	document.cookie = "history4= 0; " + expires + ";path=/;";
-	document.cookie = "history5= 0; " + expires + ";path=/;";
-	document.cookie = "history6= 0; " + expires + ";path=/;";
-	document.cookie = "history7= 0; " + expires + ";path=/;";
-	document.cookie = "history8= 0; " + expires + ";path=/;";
-	document.cookie = "history9= 0; " + expires + ";path=/;";
-	document.cookie = "history10= 0;" + expires + ";path=/;";
+		console.log("Creating cookies");
+		//just a test
+		let maxAge = "max-age="+ (30*24*60*60);
+		document.cookie = "history1= 0;" + maxAge + ";path=/;";
+		document.cookie = "history2= 0; " + maxAge + ";path=/;";
+		document.cookie = "history3= 0; " + maxAge + ";path=/;";
+		document.cookie = "history4= 0; " + maxAge + ";path=/;";
+		document.cookie = "history5= 0; " + maxAge + ";path=/;";
+		document.cookie = "history6= 0; " + maxAge + ";path=/;";
+		document.cookie = "history7= 0; " + maxAge + ";path=/;";
+		document.cookie = "history8= 0; " + maxAge + ";path=/;";
+		document.cookie = "history9= 0; " + maxAge + ";path=/;";
+		document.cookie = "history10= 0;" + maxAge + ";path=/;";
 	}
 
 	//get cookie values
