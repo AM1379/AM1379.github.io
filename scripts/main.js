@@ -10,7 +10,9 @@ $(document).ready(function() {
 	let operation = $("#operation");
 	let display = $("#display");
 	let numOperationsHistory = 0;
-
+	let urlParams = new URLSearchParams(window.location.search);
+	
+	
 
 	//declare cookie variables
 	if (!document.cookie) {
@@ -72,6 +74,9 @@ $(document).ready(function() {
 			document.cookie = `history10 = ${operation}; `;
 		}
 	}
+	
+	//getUserName
+	$('#user').text( $('user').text + urlParams.get('username') );
 	
 	
 	//click on a number
