@@ -76,7 +76,8 @@ $(document).ready(function() {
 	}
 	
 	//getUserName
-	$('#user').text( $('user').text() + urlParams.get('username') );
+	$('#user').text( $('#user').text() + urlParams.get('username') );
+
 	
 	
 	//click on a number
