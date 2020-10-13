@@ -11,40 +11,12 @@ $(document).ready(function() {
 	let display = $("#display");
 	let numOperationsHistory = 0;
 	let urlParams = new URLSearchParams(window.location.search);
+	let username = urlParams.get('username') );
 	let maxAge = "max-age="+ (30*24*60*60);
 	
 	
-
-	//declare cookie variables
-	if (!document.cookie) {
-		document.cookie = "history1= 0;" + maxAge + ";path=/;";
-		document.cookie = "history2= 0; " + maxAge + ";path=/;";
-		document.cookie = "history3= 0; " + maxAge + ";path=/;";
-		document.cookie = "history4= 0; " + maxAge + ";path=/;";
-		document.cookie = "history5= 0; " + maxAge + ";path=/;";
-		document.cookie = "history6= 0; " + maxAge + ";path=/;";
-		document.cookie = "history7= 0; " + maxAge + ";path=/;";
-		document.cookie = "history8= 0; " + maxAge + ";path=/;";
-		document.cookie = "history9= 0; " + maxAge + ";path=/;";
-		document.cookie = "history10= 0;" + maxAge + ";path=/;";
-	}
-
-	//get cookie values
-	function getCurrentCookieValues() {
-	let cookieValues = document.cookie
-			.split(';')
-			.map(cookie => cookie.split('='))
-			.reduce((accumulator, [key, value, result]) => (
-			{...accumulator, [key.trim()]: { 
-			val: decodeURIComponent(value), 
-			res: decodeURIComponent(result) } 
-			}), 
-			{});
+	//function declarations
 	
-	return cookieValues;
-	}
-
-	//assign cookie values to history
 	function recreateHistoryFromCookies(){
 		let cookieValues = getCurrentCookieValues();
 		for (let i = 1; i <= 10; i++) {
@@ -56,51 +28,6 @@ $(document).ready(function() {
 		}
 	}
 	
-	recreateHistoryFromCookies();
-	
-	function saveOperationToCookie(operation, index) {
-		let cookieValues = getCurrentCookieValues();
-		if (cookieValues.history10.val == "0") {
-			document.cookie = `history${index} = ${operation}; ${maxAge}; path=/; `;
-		}
-		else {
-			
-			for (let i = 1; i<10; i++) {
-				let op = cookieValues[`history${i+1}`].val + "=" + cookieValues[`history${i+1}`].res;
-				document.cookie = `history${i} = ${op}; ${maxAge}; path=/; `;
-			}
-			document.cookie = `history10 = ${operation}; ${maxAge}; path=/; `;
-		}
-	}
-	
-	//getUserName
-	$('#user').text( $('#user').text() + urlParams.get('username') );
-
-	
-	
-	//click on a number
-	$("input.number").on('click', function () {
-		if (operator == '=') resetCalculator();
-			
-		let num = $(this).attr("value");
-		display.attr("value", display.attr("value") + num);		
-		
-		//$(this).attr("value","b"); //test
-	} );
-
-	//click on an operator
-	$("input.operator").on('click', function () {
-		if (operator == '=') operation.attr('value', "");
-		if ( $(this).attr('value') == '-' && display.attr('value') == "") {
-		    display.attr('value', '-');	
-		} else {
-		    chooseOperation();
-            updateOperator($(this).attr('value'));
-            operation.attr('value',operation.attr('value') + display.attr('value')+" " + operator + " ");
-            display.attr('value', "");
-        }
-    });
-			
 	function chooseOperation () {
 		switch (operator) {
 			case '=' : ;
@@ -118,8 +45,7 @@ $(document).ready(function() {
 		    break;
 		}
 	}
-	
-	
+		
 	function sum(a,b){
 		updateResult(a + b);
 	    }
@@ -139,10 +65,6 @@ $(document).ready(function() {
 	function power(a,b) {
 		updateResult(a ** b);
 	}
-        //when click '%'
-$('#percent').on('click', function() {
-	display.attr('value', display.attr('value') / 100);
- 	});
 	
 	function updateResult(number) {
 		result = number;
@@ -158,14 +80,6 @@ $('#percent').on('click', function() {
 		chooseOperation();
 	    display.attr("value", result);
 	}
-		//when click '='
-	$('input#enter').on('click', function() {
-		operation.attr('value',operation.attr('value') + display.attr('value')+" = " );
-		showResult();
-		updateOperator("=");
-		saveToHistory(operation.attr('value') + result);
-		saveOperationToCookie(operation.attr('value') + result, numOperationsHistory); 
-	});
 	
 	function resetCalculator() {
 		display.attr('value', "");
@@ -173,21 +87,6 @@ $('#percent').on('click', function() {
 		updateResult(null);
 		operator = "";
 	}
-	
-	//erase last character
-	$("#C").on('click', function () {
-		display.attr("value", display.attr("value").slice(0,-1));
-	} );
-
-	
-	//erase everything
-	$("#CE").on('click', function () {
-		display.attr("value", "");
-		operation.attr("value", "");
-		updateResult(null);
-		updateOperator("");
-	} );
-		
 	
 	function saveToHistory(value) {
 		
@@ -206,10 +105,8 @@ $('#percent').on('click', function() {
 			$('ul').prepend(li);
 		}
 	}
-
 	
-
-	function currentTime() {
+	function updateClock() {
 
         let date = new Date();
 	    let hour = date.getHours();
@@ -229,13 +126,73 @@ $('#percent').on('click', function() {
 
 	    var t = setTimeout(function(){ currentTime() }, 1000);
 	}
-
-	currentTime();
 	
-
-   
-    	
+	//check cookies
+	if ( isNewUser(username) ) {
+		setUserCookie(username);
+		setCookieHistory();
+	} else {
+		recreateHistoryFromCookies();
+	}
+	
+	// set username text on document
+	$('#user').text(username);
 	
 	
+	//click on a number
+	$("input.number").on('click', function () {
+		if (operator == '=') {
+			resetCalculator();
+		}
+		let num = $(this).attr("value");
+		display.attr("value", display.attr("value") + num);
+	} );
 
+	//click on an operator
+	$("input.operator").on('click', function () {
+		if (operator == '=') operation.attr('value', "");
+		if ( $(this).attr('value') == '-' && display.attr('value') == "") {
+		    display.attr('value', '-');	
+		} else {
+		    chooseOperation();
+            updateOperator($(this).attr('value'));
+            operation.attr('value',operation.attr('value') + display.attr('value')+" " + operator + " ");
+            display.attr('value', "");
+        }
+    });
+			
+	
+        //click '%'
+		$('#percent').on('click', function() {
+			display.attr('value', display.attr('value') / 100);
+		});
+	
+	
+		//click '='
+		$('input#enter').on('click', function() {
+			operation.attr('value',operation.attr('value') + display.attr('value')+" = " );
+			showResult();
+			updateOperator("=");
+			saveToHistory(operation.attr('value') + result);
+			saveOperationToCookie(operation.attr('value') + result, numOperationsHistory); 
+		});
+	
+	
+	
+		//erase last character
+		$("#C").on('click', function () {
+			display.attr("value", display.attr("value").slice(0,-1));
+		} );
+
+	
+		//erase everything
+		$("#CE").on('click', function () {
+			display.attr("value", "");
+			operation.attr("value", "");
+			updateResult(null);
+			updateOperator("");
+		} );
+		
+		updateClock();
+	
 } );
