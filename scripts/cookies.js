@@ -54,7 +54,7 @@ function setCookieHistory() {
 function isNewUser(newUser) {
 	let currentUser = getCurrentCookieValues().username;
 	if (!currentUser) 	return true;
-	else if (newUser !=== currentUser.value) return true;
+	else if (newUser !== currentUser.value) return true;
 	else return false;
 }
 		
