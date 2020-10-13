@@ -11,7 +11,7 @@ $(document).ready(function() {
 	let display = $("#display");
 	let numOperationsHistory = 0;
 	let urlParams = new URLSearchParams(window.location.search);
-	let username = urlParams.get('username') );
+	let username = urlParams.get('username');
 	let maxAge = "max-age="+ (30*24*60*60);
 	
 	
