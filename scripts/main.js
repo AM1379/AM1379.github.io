@@ -124,7 +124,7 @@ $(document).ready(function() {
 		    else return k;
 	    }
 
-	    var t = setTimeout(function(){ currentTime() }, 1000);
+	    var t = setTimeout(function(){ updateClock() }, 1000);
 	}
 	
 	//check cookies
