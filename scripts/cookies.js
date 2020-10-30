@@ -62,6 +62,3 @@ function setUserCookie(newUser) {
 	document.cookie = `username = ${newUser}; ${getExpiryDate()}; path=/; `;
 }
 
-
-
-	
