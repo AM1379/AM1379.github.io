@@ -4,7 +4,7 @@
 function getExpiryDate() {
 	
 	var d = new Date();
-	d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	d.setTime(d.getTime() + (30*24*60*60*1000));
 	var expires = "expires="+ d.toUTCString();
 	return expires;
 }
@@ -54,7 +54,7 @@ function setCookieHistory() {
 function isNewUser(newUser) {
 	let currentUser = getCurrentCookieValues().username;
 	if (!currentUser) 	return true;
-	else if (newUser !== currentUser.value) return true;
+	else if (newUser !== currentUser.val) return true;
 	else return false;
 }
 		
@@ -62,6 +62,3 @@ function setUserCookie(newUser) {
 	document.cookie = `username = ${newUser}; ${getExpiryDate()}; path=/; `;
 }
 
-
-
-	
